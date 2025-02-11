@@ -12,15 +12,21 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Include the API class
+// Include required files
 require_once plugin_dir_path(__FILE__) . 'includes/class-menu-api.php';
+require_once plugin_dir_path(__FILE__) . 'includes/class-menu-admin.php';
 
 class Custom_Menu_Dropdown
 {
+    private $admin;
+
     public function __construct()
     {
         // Initialize the API
         new Menu_API();
+
+        // Initialize admin
+        $this->admin = new Menu_Admin();
 
         // Add script and style enqueue
         add_action('wp_enqueue_scripts', array($this, 'enqueue_assets'));
@@ -46,6 +52,15 @@ class Custom_Menu_Dropdown
             array(),
             '1.0.0',
             true
+        );
+
+        // Pass menu items to JavaScript
+        wp_localize_script(
+            'custom-menu-dropdown',
+            'menuDropdownSettings',
+            array(
+                'menuItems' => $this->admin->get_menu_items(),
+            )
         );
     }
 }

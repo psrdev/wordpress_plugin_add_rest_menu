@@ -74,12 +74,14 @@ function appendDropdownToElement(triggerId) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const element431 = document.getElementById("menu-item-431");
-    const element490 = document.getElementById("menu-item-490");
-    if (element431) {
-        appendDropdownToElement("menu-item-431");
-    }
-    if (element490) {
-        appendDropdownToElement("menu-item-490");
+    // Get menu items from WordPress settings
+    if (typeof menuDropdownSettings !== 'undefined' && menuDropdownSettings.menuItems) {
+        menuDropdownSettings.menuItems.forEach(itemId => {
+            const elementId = `menu-item-${itemId}`;
+            const element = document.getElementById(elementId);
+            if (element) {
+                appendDropdownToElement(elementId);
+            }
+        });
     }
 });
