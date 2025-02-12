@@ -25,7 +25,7 @@ The **Custom Menu Dropdown** plugin adds custom dropdown functionality to menu i
 
 - [`custom-menu-dropdown.php`](custom-menu-dropdown.php): Main plugin file that initializes the plugin and enqueues assets.
 - [`includes/class-menu-api.php`](includes/class-menu-api.php): Contains the `Menu_API` class that registers the REST API endpoint and provides menu data.
-- `includes/class-menu-admin.php`: Contains the `Menu_Admin` class that adds the settings page and handles menu item configuration.
+- [`includes/class-menu-admin.php`](includes/class-menu-admin.php): Contains the `Menu_Admin` class that adds the settings page and handles menu item configuration.
 - [`js/dropdown.js`](js/dropdown.js): JavaScript file that handles the dropdown functionality and fetches data from the REST API.
 - [`css/dropdown.css`](css/dropdown.css): CSS file that styles the dropdown menu.
 
