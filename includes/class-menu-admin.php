@@ -125,7 +125,7 @@ class Menu_Admin
         $api_key = isset($options['api_key']) ? $options['api_key'] : '';
         $api_url = isset($options['api_url']) ? $options['api_url'] : '';
         return [
-            'menu_items' => array_map('trim', explode(',', $menu_items)),
+            'menu_items' => strpos($menu_items, ',') !== false ? array_map('trim', explode(',', $menu_items)) : array($menu_items),
             'api_key' => $api_key,
             'api_url' => $api_url,
         ];
