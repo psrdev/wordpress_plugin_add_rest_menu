@@ -4,6 +4,7 @@
   top: 40px;
   border-radius: 5px;
   overflow: hidden;
+  z-index: 100;
 }
 
 .dropdown-content li a {

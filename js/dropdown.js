@@ -43,9 +43,8 @@ function appendDropdownToElement(triggerId) {
                             const { endpoint_url: link, title: name } = item;
                             const listItem = document.createElement("li");
                             const linkElement = document.createElement("a");
-
-                            if (name === 'Maldives') {
-                                linkElement.href = customUrl.maldives;
+                            if (customUrl[name.toLowerCase()]) {
+                                linkElement.href = customUrl[name.toLowerCase()];
                             } else {
                                 linkElement.href = link;
                             }
@@ -77,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Get menu items from WordPress settings
     if (typeof menuDropdownSettings !== 'undefined' && menuDropdownSettings.menuItems) {
         menuDropdownSettings.menuItems.forEach(itemId => {
-            const elementId = `menu-item-${itemId}`;
+            const elementId = itemId;
             const element = document.getElementById(elementId);
             if (element) {
                 appendDropdownToElement(elementId);
